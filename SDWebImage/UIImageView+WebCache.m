@@ -58,11 +58,16 @@ static char operationKey;
             if (!sself) return;
             if (image)
             {
-                [UIView transitionWithView:sself duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                if (cacheType == SDImageCacheTypeNone) {
+                    [UIView transitionWithView:sself duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                        sself.image = image;
+                    } completion:^(BOOL finished) {
+                        [sself setNeedsLayout];
+                    }];
+                } else {
                     sself.image = image;
-                } completion:^(BOOL finished) {
                     [sself setNeedsLayout];
-                }];
+                }
             }
             if (completedBlock && finished)
             {
