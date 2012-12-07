@@ -58,8 +58,11 @@ static char operationKey;
             if (!sself) return;
             if (image)
             {
-                sself.image = image;
-                [sself setNeedsLayout];
+                [UIView transitionWithView:sself duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                    sself.image = image;
+                } completion:^(BOOL finished) {
+                    [sself setNeedsLayout];
+                }];
             }
             if (completedBlock && finished)
             {
