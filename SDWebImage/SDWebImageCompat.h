@@ -13,9 +13,6 @@
 #error SDWebImage does not support Objective-C Garbage Collection
 #endif
 
-#if !__has_feature(objc_arc)
-#error SDWebImage is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
-#endif
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
 #error SDWebImage doesn't support Deployement Target version < 5.0
