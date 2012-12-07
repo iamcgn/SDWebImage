@@ -78,8 +78,11 @@
 
 - (void)webImageManager:(SDWebImageManager *)imageManager didFinishWithImage:(UIImage *)image
 {
+  [UIView transitionWithView:self duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
     self.image = image;
+  } completion:^(BOOL finished) {
     [self setNeedsLayout];
+  }];
 }
 
 @end
