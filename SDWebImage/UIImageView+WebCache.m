@@ -58,8 +58,8 @@ static char operationKey;
             if (!sself) return;
             if (image)
             {
-                if (cacheType == SDImageCacheTypeNone) {
-                    [UIView transitionWithView:sself duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                if (options & SDWebImageEnableTransition) {
+                    [UIView transitionWithView:sself duration:1.0f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                         sself.image = image;
                     } completion:^(BOOL finished) {
                         [sself setNeedsLayout];
